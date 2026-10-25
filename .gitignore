@@ -22,7 +22,11 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+*.key
+*.bak
+*.log
 
 # debug
 npm-debug.log*
@@ -30,8 +34,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files hold the real API keys and must never be committed.
+# the example file has no values in it, so it is safe to share.
 .env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -39,3 +45,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# D.I.K.S.H.A's private memory
+/data
+
+# retired 3D character models: large, unused, and not ours to redistribute
+*.vrm
+
+# editors and local tool settings
+.vscode/
+.idea/
+*.swp
+*~
+.claude/settings.local.json
+
+# public/intro (the recorded intro clips and their .txt notes) IS committed on purpose:
+# production serves those files and never records new ones.
