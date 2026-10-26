@@ -1,0 +1,15 @@
+# never upload these to Vercel (it builds from what's left)
+.env*
+!.env.local.example
+/data
+*.vrm
+/_archive
+/.next
+/node_modules
+*.tsbuildinfo
+*.pem
+*.key
+*.bak
+*.log
+.DS_Store
+.claude

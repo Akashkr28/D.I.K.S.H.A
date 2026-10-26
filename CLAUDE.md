@@ -215,3 +215,24 @@ history. Current layout:
   (.portrait in globals.css): next/image, cropped head-to-knees with a scale transform, HUD
   corner brackets, a slow scan line, bottom fade into the page, and a clip-path wipe on reveal.
   Stacks above the text under 900px. Reduced motion turns off the wipe and scan.
+
+## Contact (26 Oct)
+
+- content/portfolio.ts now has Akash's real email, phone (+91), GitHub and LinkedIn; she can
+  share them (contact line in visitorPrompt includes phone).
+- Contact form (components/ContactForm.tsx -> app/api/contact/route.ts): name, email, optional
+  company, message, hidden honeypot field. 3 messages per visitor per hour (in-memory tooMany).
+  Sends via Resend's REST API when RESEND_API_KEY is set (reply-to = visitor); otherwise dev
+  saves to data/messages.json and production answers 503 with the email address.
+  Free Resend sender onboarding@resend.dev only delivers to the Resend account's own email.
+
+## Deployed (26 Oct)
+
+- Vercel project akash-portfolio (team akash-kumar-singhs-projects-fcf110d0), live at
+  https://akash-portfolio-eta-snowy.vercel.app. Linked to github.com/Akashkr28/D.I.K.S.H.A,
+  so pushes deploy. First deploy was from the CLI (vercel deploy --prod); .vercelignore keeps
+  .env*, data/, *.vrm and _archive/ out of uploads.
+- lib/limits.ts tooMany() is async and uses Upstash Redis (UPSTASH_REDIS_REST_* or KV_REST_API_*)
+  when set, memory otherwise.
+- Env vars still to add in Vercel: ANTHROPIC_API_KEY, ELEVENLABS_API_KEY, RESEND_API_KEY,
+  Upstash (Storage tab). Until then /api/guide answers 503 and the form says email instead.

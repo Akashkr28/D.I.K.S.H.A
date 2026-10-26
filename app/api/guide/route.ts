@@ -14,7 +14,7 @@ const MAX_MESSAGE_CHARS = 500
 export async function POST(request: Request) {
   if (!process.env.ANTHROPIC_API_KEY) return new Response('She is offline right now.', { status: 503 })
   // every question costs AI credits, so each visitor gets a ceiling
-  const limited = tooMany(request, 'guide', 20, 10 * 60 * 1000)
+  const limited = await tooMany(request, 'guide', 20, 10 * 60 * 1000)
   if (limited) return limited
 
   let messages: ChatMessage[]

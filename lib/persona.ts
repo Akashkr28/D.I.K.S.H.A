@@ -48,6 +48,7 @@ export function visitorPrompt(): string {
     .join('. ')
   const contact = [
     profile.email && `email ${profile.email}`,
+    profile.phone && `phone ${profile.phone}`,
     profile.links.linkedin && `LinkedIn ${profile.links.linkedin}`,
     profile.links.github && `GitHub ${profile.links.github}`,
     profile.links.hashnode && `blog ${profile.links.hashnode}`,

@@ -9,7 +9,7 @@ const MAX_CHARS = 600
 export async function POST(request: Request) {
   if (!hasSpeechKey()) return new Response('ELEVENLABS_API_KEY is not set.', { status: 501 })
   // every sentence costs speech credits, so visitors get a ceiling
-  const limited = tooMany(request, 'tts', 40, 10 * 60 * 1000)
+  const limited = await tooMany(request, 'tts', 40, 10 * 60 * 1000)
   if (limited) return limited
 
   let text = ''

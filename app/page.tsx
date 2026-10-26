@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import Image from 'next/image'
 import Guide from '../components/Guide'
 import Cursor from '../components/Cursor'
+import ContactForm from '../components/ContactForm'
 import ProjectVisual from '../components/ProjectVisual'
 import ScrollFX, { LocalTime } from '../components/ScrollFX'
 import { profile, publishedProjects } from '@/content/portfolio'
@@ -52,6 +53,7 @@ const FACTS = [
 export default function Home() {
   const links = [
     profile.email && { label: profile.email, href: `mailto:${profile.email}` },
+    profile.phone && { label: profile.phone, href: `tel:${profile.phone.replace(/\s/g, '')}` },
     profile.links.github && { label: 'GitHub', href: profile.links.github },
     profile.links.linkedin && { label: 'LinkedIn', href: profile.links.linkedin },
     profile.links.hashnode && { label: 'Blog', href: profile.links.hashnode },
@@ -210,26 +212,27 @@ export default function Home() {
         <h2 className="display display-xxl" data-reveal="words">
           {words("Let's talk.")}
         </h2>
-        <div className="contact-row" data-reveal>
-          {profile.email ? (
-            <a className="orb-button" href={`mailto:${profile.email}`} data-magnetic>
-              Email Akash
-            </a>
-          ) : (
-            <a className="orb-button" href="#top" data-magnetic>
-              Ask D.I.K.S.H.A
-            </a>
-          )}
-          <div className="contact-links">
-            {links.length > 0 ? (
-              links.map((link) => (
-                <a key={link.href} href={link.href}>
-                  {link.label} ↗
-                </a>
-              ))
+        <div className="contact-grid">
+          <div className="contact-row" data-reveal>
+            {profile.email ? (
+              <a className="orb-button" href={`mailto:${profile.email}`} data-magnetic>
+                Email Akash
+              </a>
             ) : (
-              <p>Contact details are coming soon. Until then, D.I.K.S.H.A can tell you about his work.</p>
+              <a className="orb-button" href="#top" data-magnetic>
+                Ask D.I.K.S.H.A
+              </a>
             )}
+            <div className="contact-links">
+              {links.map((link) => (
+                <a key={link.href} href={link.href} {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                  {link.label} {link.href.startsWith('http') ? '↗' : '→'}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div data-reveal>
+            <ContactForm />
           </div>
         </div>
       </section>

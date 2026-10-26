@@ -1,7 +1,7 @@
 // Everything D.I.K.S.H.A is allowed to say about Akash, and everything the page shows.
 //
 // DRAFT: written from notes, not yet checked by Akash. Before the site goes public,
-// read every line, fix anything wrong, and fill in the empty links and email.
+// read every line and fix anything wrong. Contact details were added by Akash on 26 Oct.
 // She answers visitors only from this file, so what's here is what recruiters hear.
 
 export const profile = {
@@ -19,8 +19,13 @@ export const profile = {
     Other: ['Python', 'OAuth 2.0', 'Git'],
   },
   // leave a field empty to hide it on the page
-  email: '',
-  links: { github: '', linkedin: '', hashnode: '' },
+  email: 'akashkumarsingh816@gmail.com',
+  phone: '+91 88253 30731',
+  links: {
+    github: 'https://github.com/Akashkr28',
+    linkedin: 'https://www.linkedin.com/in/akash-kumar-singh-2a3503364/',
+    hashnode: '',
+  },
 }
 
 export type Project = {
